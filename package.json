@@ -27,7 +27,7 @@
     "@typescript-eslint/parser": "^4.0.0",
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^8.8.0",
-    "husky": "^8.0.3",
+    "npx husky init": "^8.0.3",
     "lint-staged": "^13.3.0",
     "prettier": "^2.8.8",
     "ts-node-dev": "^2.0.0",
