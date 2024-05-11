@@ -1,12 +1,12 @@
 import { v2 as cloudinary } from 'cloudinary';
 import httpStatus from 'http-status';
 import multer from 'multer';
-import { CloudinaryStorage } from 'multer-storage-cloudinary';
+// import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import path from 'path';
 import config from '../config';
 import ApiError from '../errors/ApiError';
 import {
-  CloudinaryParams,
+  // CloudinaryParams,
   ICloudinaryResponse,
   IUploadFile,
 } from '../interfaces/file';
@@ -18,19 +18,21 @@ cloudinary.config({
   secure: true,
 });
 
-const params: CloudinaryParams = {
-  folder: 'uploads',
-  unique_filename: true,
-  allowed_formats: ['jpg', 'png', 'jpeg', 'gif'],
-  // transformation: [{ width: 500, height: 500, crop: 'limit' }],
-};
+// const params: CloudinaryParams = {
+//   folder: 'pos',
+//   unique_filename: true,
+//   allowed_formats: ['jpg', 'png', 'jpeg', 'gif'],
 
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: params,
-});
-const upload = multer({
-  storage: storage,
+//   // transformation: [{ width: 500, height: 500, crop: 'limit' }],
+// };
+
+// const storage = new CloudinaryStorage({
+//   cloudinary: cloudinary,
+//   params: params,
+// });
+const multerUpload = multer({
+  // storage: storage,
+  dest: '/uploads',
   fileFilter: function (req, file, cb) {
     const filetypes = /jpeg|jpg|png|gif/;
     const mimetype = filetypes.test(file.mimetype);
@@ -99,7 +101,7 @@ const replaceImage = async (
 
 export const FileUploadHelper = {
   uploadToCloudinary,
-  upload,
+  multerUpload,
   destroyToCloudinary,
   replaceImage,
 };

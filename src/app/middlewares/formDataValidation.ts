@@ -3,11 +3,18 @@ import { NextFunction, Request, Response } from 'express';
 import { AnyZodObject, ZodEffects } from 'zod';
 
 const formDataValidation =
-  (schema: AnyZodObject | ZodEffects<AnyZodObject>, controller: any) =>
+  (
+    schema: AnyZodObject | ZodEffects<AnyZodObject>
+    //  controller: any
+  ) =>
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      req.body = schema.parse(JSON.parse(req.body?.data));
-      return controller(req, res, next);
+      const { data } = req.body;
+      await schema.parseAsync({
+        body: JSON.parse(data),
+      });
+      // return controller(req, res, next);
+      return next();
     } catch (error) {
       next(error);
     }

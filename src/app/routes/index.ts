@@ -1,12 +1,13 @@
 import express from 'express';
+import { StoreRoutes } from '../modules/store/store.route';
 
 const router = express.Router();
 
 const moduleRoutes = [
-  // {
-  //   path: '/auth',
-  //   route: AuthRoutes,
-  // },
+  {
+    path: '/stores',
+    route: StoreRoutes,
+  },
 ];
 
 moduleRoutes.forEach(module => router.use(module.path, module.route));
