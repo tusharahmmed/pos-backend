@@ -1,0 +1,138 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum USER_ROLE {
+  store_admin
+  super_admin
+}
+
+model User {
+  id       String    @id @default(uuid())
+  name     String
+  email    String    @unique
+  password String
+  phone    String?   @default("")
+  role     USER_ROLE
+
+  store_id String @unique
+  store    Store  @relation(fields: [store_id], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Store {
+  id            String   @id
+  title         String
+  logo          String?
+  product_limit Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user       User?
+  categories Category[]
+  brands     Brand[]
+  products   Product[]
+  billings   Billing[]
+
+  @@map("stores")
+}
+
+model Category {
+  id    String @id @default(uuid())
+  title String
+  image String
+
+  storeId String
+  store   Store  @relation(fields: [storeId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  products Product[]
+
+  @@map("categories")
+}
+
+model Brand {
+  id    String @id @default(uuid())
+  title String
+  image String
+
+  storeId String
+  store   Store  @relation(fields: [storeId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  products Product[]
+
+  @@map("brands")
+}
+
+model Product {
+  id       String  @id @default(uuid())
+  title    String
+  image    String
+  price    Decimal @db.Money
+  quantity Int
+
+  category_id String
+  category    Category @relation(fields: [category_id], references: [id])
+
+  brand_id String
+  brand    Brand  @relation(fields: [brand_id], references: [id])
+
+  store_id String
+  store    Store  @relation(fields: [store_id], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  billing_products BillingProduct[]
+
+  @@map("products")
+}
+
+model Billing {
+  id             String  @id @default(uuid())
+  customer_name  String
+  customer_phone String
+  tax_amount     Decimal @db.Money
+  total_amount   Decimal @db.Money
+
+  store_id String
+  store    Store  @relation(fields: [store_id], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  billing_products BillingProduct[]
+
+  @@map("billings")
+}
+
+model BillingProduct {
+  id String @id @default(uuid())
+
+  product_id String
+  product    Product @relation(fields: [product_id], references: [id])
+
+  quantity String
+
+  billing_id String
+  billing    Billing @relation(fields: [billing_id], references: [id])
+
+  @@map("billing_products")
+}
