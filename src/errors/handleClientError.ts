@@ -14,6 +14,11 @@ const handleClientError = (error: Prisma.PrismaClientKnownRequestError) => {
       message = 'delete failed!';
       errors = [{ path: '', message: message }];
     }
+  } else if (error.code === 'P2002') {
+    if (error.message.includes('create()` invocation:')) {
+      message = 'create failed!';
+      errors = [{ path: '', message: message }];
+    }
   }
 
   const statusCode = 400;

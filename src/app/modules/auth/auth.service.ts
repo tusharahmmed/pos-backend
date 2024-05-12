@@ -21,18 +21,19 @@ const signup = async (payload: User) => {
 
   return passwordRemoved;
 };
-const signin = async (payload: Pick<User, 'email' | 'password'>) => {
-  const { email, password } = payload;
+const signin = async (payload: Pick<User, 'store_id' | 'password'>) => {
+  const { store_id, password } = payload;
   // find user
   const user = await prisma.user.findUnique({
     where: {
-      email,
+      store_id,
     },
   });
 
   if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'user not found!');
+    throw new ApiError(httpStatus.NOT_FOUND, 'store not found!');
   }
+  // if role super_admin then 401
 
   // match password
 
@@ -45,13 +46,13 @@ const signin = async (payload: Pick<User, 'email' | 'password'>) => {
   // create token
 
   const accessToken = jwtHelpers.createToken(
-    { id: user.id, role: user.role, permissions: user.permissions },
+    { id: user.id, role: user.role, store_id: user.store_id },
     config.jwt.secret as Secret,
     config.jwt.expires_in as string
   );
 
   const refreshToken = jwtHelpers.createToken(
-    { id: user.id, role: user.role, permissions: user.permissions },
+    { id: user.id, role: user.role, store_id: user.store_id },
     config.jwt.refresh_secret as Secret,
     config.jwt.refresh_expires_in as string
   );
@@ -92,7 +93,7 @@ const refreshToken = async (payload: string) => {
     {
       id: verifiedUser.id,
       role: verifiedUser.role,
-      permissions: verifiedUser.permissions,
+      store_id: verifiedUser.store_id,
     },
     config.jwt.secret as Secret,
     config.jwt.expires_in as string

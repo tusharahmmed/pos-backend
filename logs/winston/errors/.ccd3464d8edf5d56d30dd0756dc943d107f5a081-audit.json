@@ -39,6 +39,16 @@
             "date": 1715447629545,
             "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-11-05-23-error.log",
             "hash": "f27d4620cf0d6a9552e7985931e7e45092e406636e107c4e96898dd2ab3c9e71"
+        },
+        {
+            "date": 1715507892030,
+            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-12-05-15-error.log",
+            "hash": "5a3b4c77dd8019a0169e0cf78d4f34b861385d21f47b850cdbbbaf9bd32a6735"
+        },
+        {
+            "date": 1715508557755,
+            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-12-05-16-error.log",
+            "hash": "4113dca6d1f1ecd730cd22d13f7527121ec0ef44160f08ea5f22370bfd00aaa9"
         }
     ],
     "hashType": "sha256"

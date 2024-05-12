@@ -1,26 +1,22 @@
-import { USER_ROLE } from '@prisma/client';
 import { z } from 'zod';
+import { ENUM_USER_ROLE } from '../../../enums/user';
 
 const signup = z.object({
   body: z.object({
     name: z.string({ required_error: 'name is required' }),
-    serName: z.string({ required_error: 'Ser Name is required' }),
     email: z.string({ required_error: 'Email is required' }),
     password: z.string({ required_error: 'Password is required' }),
-    role: z.enum([...Object.values(USER_ROLE)] as [string, ...string[]], {
+    phone: z.string({ required_error: 'phone is required' }),
+    role: z.enum([ENUM_USER_ROLE.STORE_ADMIN], {
       required_error: 'Role is required',
     }),
-    permissions: z
-      .array(z.string(), { required_error: 'Permissions is required' })
-      .nonempty(),
-    phone: z.string().optional(),
-    profileImage: z.string().optional(),
+    store_id: z.string({ required_error: 'Store id is required' }),
   }),
 });
 
 const signin = z.object({
   body: z.object({
-    email: z.string({ required_error: 'email is required' }),
+    store_id: z.string({ required_error: 'store_id is required' }),
     password: z.string({ required_error: 'password is required' }),
   }),
 });

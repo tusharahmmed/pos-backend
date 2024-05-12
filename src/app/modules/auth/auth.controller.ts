@@ -16,7 +16,8 @@ const signup = catchAsync(async (req, res) => {
 });
 
 const signin = catchAsync(async (req, res) => {
-  const { refreshToken, accessToken } = await AuthService.signin(req.body);
+  const payload = req.body;
+  const { refreshToken, accessToken } = await AuthService.signin(payload);
 
   // set refresh token to cookie
   res.cookie('refreshToken', refreshToken, {
@@ -31,7 +32,7 @@ const signin = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User signin successfully!',
+    message: 'User successfully signin',
     data: { accessToken },
   });
 });
@@ -44,7 +45,7 @@ const refreshToken = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Successfully generate refresh token',
+    message: 'Successfully generate new token',
     data: result,
   });
 });
