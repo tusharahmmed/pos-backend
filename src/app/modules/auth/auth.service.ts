@@ -40,7 +40,7 @@ const signin = async (payload: Pick<User, 'store_id' | 'password'>) => {
   const matchedResult = await bcrypt.compare(password, user.password);
 
   if (!matchedResult) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, 'Password does not matched');
+    throw new ApiError(httpStatus.NOT_ACCEPTABLE, 'Password does not matched');
   }
 
   // create token
