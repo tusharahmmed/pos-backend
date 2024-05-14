@@ -89,6 +89,11 @@
             "date": 1715668224171,
             "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-14-05-12-error.log",
             "hash": "628f63130438ea676c5090c9c306c1ee760c6f2b780b6d54d21c8bf695be5140"
+        },
+        {
+            "date": 1715683380435,
+            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-14-05-16-error.log",
+            "hash": "18674b47a09a7fabe39a72d17dba3b9a09d5b20059e98ed9d8ea3e9d802f24c2"
         }
     ],
     "hashType": "sha256"
