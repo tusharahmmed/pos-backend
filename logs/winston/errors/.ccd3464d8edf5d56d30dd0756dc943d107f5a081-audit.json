@@ -6,41 +6,6 @@
     "auditLog": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\.ccd3464d8edf5d56d30dd0756dc943d107f5a081-audit.json",
     "files": [
         {
-            "date": 1715422524063,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-11-05-16-error.log",
-            "hash": "3734e2472b0005c6ad72ab2b35afb491adaa548d64984d66447bc737b8b91588"
-        },
-        {
-            "date": 1715425491384,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-11-05-17-error.log",
-            "hash": "5635a5ca974bb347498eb2d1c7dc6a80746c0823fee501f5356acdfe5d02dba3"
-        },
-        {
-            "date": 1715428800790,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-11-05-18-error.log",
-            "hash": "d971ec0a5edc4f2f477a70e4145c4bb9450eeb078cb58b3ea5357f18a340e80a"
-        },
-        {
-            "date": 1715437064607,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-11-05-20-error.log",
-            "hash": "d9965f19898f983496ced385e7151b1a10bea324d6f6d008a5ec674bf2a14b80"
-        },
-        {
-            "date": 1715439706197,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-11-05-21-error.log",
-            "hash": "98a1aff32b4d17c2435e3b5c7612f93226764e2b08a3a2318c8528682390f4ee"
-        },
-        {
-            "date": 1715443230158,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-11-05-22-error.log",
-            "hash": "bef049f79cb8bd6cebadad2c699706f03a46406f27bb40d034c3416c56a09860"
-        },
-        {
-            "date": 1715447629545,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-11-05-23-error.log",
-            "hash": "f27d4620cf0d6a9552e7985931e7e45092e406636e107c4e96898dd2ab3c9e71"
-        },
-        {
             "date": 1715507892030,
             "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-12-05-15-error.log",
             "hash": "5a3b4c77dd8019a0169e0cf78d4f34b861385d21f47b850cdbbbaf9bd32a6735"
@@ -109,6 +74,11 @@
             "date": 1716445207589,
             "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-23-05-12-error.log",
             "hash": "590c38e74c5ad994c37826861df3ad529f09f479aaacf2c672700b8dd27dec9b"
+        },
+        {
+            "date": 1716705722923,
+            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-26-05-12-error.log",
+            "hash": "198ab3e8471d6fb44ac14cb3fa0d407b00e0105099ea07e02ea263f46c4fa29a"
         }
     ],
     "hashType": "sha256"

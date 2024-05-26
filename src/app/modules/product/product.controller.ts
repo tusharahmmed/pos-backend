@@ -1,8 +1,11 @@
 import httpStatus from 'http-status';
 import { JwtPayload } from 'jsonwebtoken';
+import { PAGINATION_FIELDS } from '../../../constants/pagination';
 import { IUploadFile } from '../../../interfaces/file';
 import catchAsync from '../../../shared/catchAsync';
+import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
+import { PRODUCT_FILTERS_FIELDS } from './product.constant';
 import { ProductService } from './product.service';
 
 const createProduct = catchAsync(async (req, res) => {
@@ -29,6 +32,29 @@ const createProduct = catchAsync(async (req, res) => {
   });
 });
 
+const getAllProducts = catchAsync(async (req, res) => {
+  const user = req.user;
+  const { store_id } = req.params;
+  const options = pick(req.query, PAGINATION_FIELDS);
+  const filters = pick(req.query, PRODUCT_FILTERS_FIELDS);
+
+  const result = await ProductService.getAllProducts(
+    user as JwtPayload,
+    store_id,
+    options,
+    filters
+  );
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Product successfully retrieved',
+    meta: result.meta,
+    data: result.data,
+  });
+});
+
 export const ProductController = {
   createProduct,
+  getAllProducts,
 };
