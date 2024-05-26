@@ -94,6 +94,21 @@
             "date": 1715683380435,
             "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-14-05-16-error.log",
             "hash": "18674b47a09a7fabe39a72d17dba3b9a09d5b20059e98ed9d8ea3e9d802f24c2"
+        },
+        {
+            "date": 1716369110939,
+            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-22-05-15-error.log",
+            "hash": "5866cb8b7c91f52fdf5c5346852d64357f2c18ec302b7cef696a4e417f65f080"
+        },
+        {
+            "date": 1716441855302,
+            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-23-05-11-error.log",
+            "hash": "fc5446c14ec45ccb7072b80596f8fc4748de0fe7f237466296974c5ee9ecaf51"
+        },
+        {
+            "date": 1716445207589,
+            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\errors\\POS-2024-23-05-12-error.log",
+            "hash": "590c38e74c5ad994c37826861df3ad529f09f479aaacf2c672700b8dd27dec9b"
         }
     ],
     "hashType": "sha256"

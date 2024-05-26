@@ -11,6 +11,9 @@ const createProduct = catchAsync(async (req, res) => {
   const payload = req.body;
   const file = req?.file as any;
 
+  // console.table(payload);
+  // console.log(file);
+
   const result = await ProductService.createProduct(
     user as JwtPayload,
     store_id,

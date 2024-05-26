@@ -26,13 +26,36 @@ cloudinary.config({
 //   // transformation: [{ width: 500, height: 500, crop: 'limit' }],
 // };
 
-// const storage = new CloudinaryStorage({
+// const cloudinaryStorage = new CloudinaryStorage({
 //   cloudinary: cloudinary,
 //   params: params,
 // });
+
+const UPLOAD_FOLDER = './uploads';
+
+const multerStorage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, UPLOAD_FOLDER);
+  },
+  filename: (req, file, callback) => {
+    const fileExt = path.extname(file.originalname);
+    const fileName =
+      file.originalname
+        .replace(fileExt, '')
+        .toLowerCase()
+        .split(' ')
+        .join('-') +
+      '-' +
+      Date.now();
+
+    callback(null, fileName + fileExt);
+  },
+});
+
 const multerUpload = multer({
-  // storage: storage,
-  dest: '/uploads',
+  storage: multerStorage,
+  // dest: './uploads',
+
   fileFilter: function (req, file, cb) {
     const filetypes = /jpeg|jpg|png|gif/;
     const mimetype = filetypes.test(file.mimetype);
