@@ -1,6 +1,7 @@
 import { Product } from '@prisma/client';
 import httpStatus from 'http-status';
 import { JwtPayload } from 'jsonwebtoken';
+import { IPARAMS_STORE_ID } from '../../../constants/store_id';
 import { ENUM_USER_ROLE } from '../../../enums/user';
 import ApiError from '../../../errors/ApiError';
 import { FileUploadHelper } from '../../../helpers/FileUploadHelper';
@@ -135,7 +136,32 @@ const getAllProducts = async (
   };
 };
 
+const getSingleProduct = async (user: JwtPayload, params: IPARAMS_STORE_ID) => {
+  // check same store user and insert store_id
+  if (
+    user.role === ENUM_USER_ROLE.STORE_ADMIN &&
+    user.store_id !== params.store_id
+  ) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
+  }
+
+  const result = await prisma.product.findUnique({
+    // filters
+    where: {
+      id: params.id,
+    },
+
+    include: {
+      brand: { select: { title: true } },
+      category: { select: { title: true } },
+    },
+  });
+
+  return result;
+};
+
 export const ProductService = {
   createProduct,
   getAllProducts,
+  getSingleProduct,
 };

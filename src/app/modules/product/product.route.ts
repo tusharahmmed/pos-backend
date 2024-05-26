@@ -17,6 +17,12 @@ router.post(
 );
 
 router.get(
+  '/:store_id/:id',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
+  ProductController.getSingleProduct
+);
+
+router.get(
   '/:store_id',
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
   ProductController.getAllProducts
