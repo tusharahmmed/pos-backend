@@ -73,8 +73,27 @@ const getSingleProduct = catchAsync(async (req, res) => {
   });
 });
 
+const deleteSingleProduct = catchAsync(async (req, res) => {
+  const user = req.user;
+  const params = pick(req.params, PARAMS_STORE_ID);
+
+  const result = await ProductService.deleteSingleProduct(
+    user as JwtPayload,
+    params
+  );
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Product successfully deleted',
+
+    data: result,
+  });
+});
+
 export const ProductController = {
   createProduct,
   getAllProducts,
   getSingleProduct,
+  deleteSingleProduct,
 };

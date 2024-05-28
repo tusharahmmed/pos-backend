@@ -16,6 +16,12 @@ router.post(
   ProductController.createProduct
 );
 
+router.delete(
+  '/:store_id/:id',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
+  ProductController.deleteSingleProduct
+);
+
 router.get(
   '/:store_id/:id',
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),

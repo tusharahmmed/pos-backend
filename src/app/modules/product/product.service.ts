@@ -160,8 +160,38 @@ const getSingleProduct = async (user: JwtPayload, params: IPARAMS_STORE_ID) => {
   return result;
 };
 
+const deleteSingleProduct = async (
+  user: JwtPayload,
+  params: IPARAMS_STORE_ID
+) => {
+  // check same store user and insert store_id
+  if (
+    user.role === ENUM_USER_ROLE.STORE_ADMIN &&
+    user.store_id !== params.store_id
+  ) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
+  }
+
+  const result = await prisma.$transaction(async tx => {
+    const isExistImage = await tx.product.findUnique({
+      where: { id: params.id },
+      select: { image: true },
+    });
+
+    if (isExistImage?.image) {
+      await FileUploadHelper.destroyToCloudinary(isExistImage.image);
+    }
+    return await tx.product.delete({
+      where: { id: params.id },
+    });
+  });
+
+  return result;
+};
+
 export const ProductService = {
   createProduct,
   getAllProducts,
   getSingleProduct,
+  deleteSingleProduct,
 };
