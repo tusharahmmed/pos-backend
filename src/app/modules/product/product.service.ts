@@ -189,9 +189,54 @@ const deleteSingleProduct = async (
   return result;
 };
 
+const updateSingeProduct = async (
+  user: JwtPayload,
+  params: IPARAMS_STORE_ID,
+  payload: Product,
+  file: IUploadFile
+) => {
+  // extract store_id can't update
+  // eslint-disable-next-line no-unused-vars
+  const { store_id, ...updatedData } = payload;
+  // check same store user and insert store_id
+  if (
+    user.role === ENUM_USER_ROLE.STORE_ADMIN &&
+    user.store_id !== params.store_id
+  ) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
+  }
+
+  const result = await prisma.$transaction(async tx => {
+    const productDetails = await tx.product.findUnique({
+      where: { id: params.id },
+    });
+
+    if (file && productDetails?.image) {
+      const response = await FileUploadHelper.replaceImage(
+        productDetails.image,
+        file
+      );
+      if (!response) {
+        throw new ApiError(httpStatus.BAD_REQUEST, 'Image upload failed');
+      }
+      updatedData.image = response.secure_url as string;
+    }
+
+    return await tx.product.update({
+      where: { id: params.id },
+      data: {
+        ...updatedData,
+      },
+    });
+  });
+
+  return result;
+};
+
 export const ProductService = {
   createProduct,
   getAllProducts,
   getSingleProduct,
   deleteSingleProduct,
+  updateSingeProduct,
 };

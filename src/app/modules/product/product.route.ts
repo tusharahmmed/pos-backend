@@ -8,24 +8,32 @@ import { ProductValidation } from './product.validation';
 
 const router = Router();
 
-router.post(
-  '/:store_id',
-  FileUploadHelper.multerUpload.single('file'),
-  validateFormDataRequest(ProductValidation.creatProduct),
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
-  ProductController.createProduct
-);
-
 router.delete(
   '/:store_id/:id',
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
   ProductController.deleteSingleProduct
 );
 
+router.patch(
+  '/:store_id/:id',
+  FileUploadHelper.multerUpload.single('file'),
+  validateFormDataRequest(ProductValidation.updateProduct),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
+  ProductController.updateSingeProduct
+);
+
 router.get(
   '/:store_id/:id',
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
   ProductController.getSingleProduct
+);
+
+router.post(
+  '/:store_id',
+  FileUploadHelper.multerUpload.single('file'),
+  validateFormDataRequest(ProductValidation.creatProduct),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
+  ProductController.createProduct
 );
 
 router.get(

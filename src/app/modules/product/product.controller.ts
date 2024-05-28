@@ -91,9 +91,31 @@ const deleteSingleProduct = catchAsync(async (req, res) => {
   });
 });
 
+const updateSingeProduct = catchAsync(async (req, res) => {
+  const user = req.user;
+  const params = pick(req.params, PARAMS_STORE_ID);
+  const payload = req.body;
+  const file = req?.file as any;
+
+  const result = await ProductService.updateSingeProduct(
+    user as JwtPayload,
+    params,
+    payload,
+    file
+  );
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Product successfully updated',
+    data: result,
+  });
+});
+
 export const ProductController = {
   createProduct,
   getAllProducts,
   getSingleProduct,
   deleteSingleProduct,
+  updateSingeProduct,
 };
