@@ -127,7 +127,7 @@ model BillingProduct {
   product_id String
   product    Product @relation(fields: [product_id], references: [id])
 
-  quantity String
+  quantity Int
 
   billing_id String
   billing    Billing @relation(fields: [billing_id], references: [id])

@@ -17,3 +17,26 @@ export const asyncForEach = async (arr: any[], callback: any) => {
     await callback(arr[i], i, arr);
   }
 };
+
+export const checkStockAvailability = (
+  stockList: { id: string; quantity: number }[],
+  purchaseList: { product_id: string; quantity: number }[]
+) => {
+  let isAvailable = true;
+
+  for (let i = 0; i < purchaseList.length; i++) {
+    const purchaseItem = purchaseList[i];
+    const { product_id, quantity } = purchaseItem;
+
+    // find the item from stockList
+    const stock = stockList.find(stockItem => stockItem.id === product_id);
+
+    // if stock_item not found or purchase.quantity exceeds available
+    if (!stock || stock.quantity < quantity) {
+      isAvailable = false;
+      break;
+    }
+  }
+
+  return isAvailable;
+};

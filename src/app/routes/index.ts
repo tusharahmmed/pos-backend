@@ -1,5 +1,6 @@
 import express from 'express';
 import { AuthRoutes } from '../modules/auth/auth.route';
+import { BillingRoutes } from '../modules/billing/billing.router';
 import { BrandRoutes } from '../modules/brand/category.route';
 import { CategoryRoutes } from '../modules/category/category.route';
 import { ProductRoutes } from '../modules/product/product.route';
@@ -27,6 +28,10 @@ const moduleRoutes = [
   {
     path: '/products',
     route: ProductRoutes,
+  },
+  {
+    path: '/billings',
+    route: BillingRoutes,
   },
 ];
 
