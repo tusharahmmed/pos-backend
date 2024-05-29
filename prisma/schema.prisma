@@ -124,8 +124,6 @@ model Billing {
 }
 
 model BillingProduct {
-  id String @id @default(uuid())
-
   product_id String
   product    Product @relation(fields: [product_id], references: [id])
 
@@ -134,5 +132,6 @@ model BillingProduct {
   billing_id String
   billing    Billing @relation(fields: [billing_id], references: [id])
 
+  @@id([product_id, billing_id])
   @@map("billing_products")
 }

@@ -1,45 +1,45 @@
 {
-    "keep": {
-        "days": true,
-        "amount": 14
+  "keep": {
+    "days": true,
+    "amount": 14
+  },
+  "auditLog": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\.def7d69ed4816f20f37710d73df99b6d8ac7f27a-audit.json",
+  "files": [
+    {
+      "date": 1716369110863,
+      "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-22-05-15-success.log",
+      "hash": "56483393958ea3d10311bf323f0dbcb7ab1015eb216e0c296fa41179202a2997"
     },
-    "auditLog": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\.def7d69ed4816f20f37710d73df99b6d8ac7f27a-audit.json",
-    "files": [
-        {
-            "date": 1716369110863,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-22-05-15-success.log",
-            "hash": "56483393958ea3d10311bf323f0dbcb7ab1015eb216e0c296fa41179202a2997"
-        },
-        {
-            "date": 1716441855235,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-23-05-11-success.log",
-            "hash": "417208dea63dbbd4646cf8e62d468c92d4062bda7e8bfb12123134de36443e84"
-        },
-        {
-            "date": 1716445207507,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-23-05-12-success.log",
-            "hash": "5926aef5091f957c7a8df04f55c8ca4784201ee710c6ac2d233428051c32f364"
-        },
-        {
-            "date": 1716705722853,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-26-05-12-success.log",
-            "hash": "d93c57a7cc329078bd4db4e2edd1a3f4d1172b7e1c0cd665d0c3b068e6dc4e46"
-        },
-        {
-            "date": 1716720768687,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-26-05-16-success.log",
-            "hash": "829a4e5b3d39c7241fdcf08e12bcdb129546dd53e181251125247589881f69fe"
-        },
-        {
-            "date": 1716916598612,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-28-05-23-success.log",
-            "hash": "6d09f91892859e6099091dc8ce5ab7ca25ecb2c17dbdc77bb5f5bb77f323e61e"
-        },
-        {
-            "date": 1716919227487,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-29-05-00-success.log",
-            "hash": "3d3b8264546ef92a1783f650059a9e88959facf04bee4b9058c1b68ff5803736"
-        }
-    ],
-    "hashType": "sha256"
+    {
+      "date": 1716441855235,
+      "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-23-05-11-success.log",
+      "hash": "417208dea63dbbd4646cf8e62d468c92d4062bda7e8bfb12123134de36443e84"
+    },
+    {
+      "date": 1716445207507,
+      "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-23-05-12-success.log",
+      "hash": "5926aef5091f957c7a8df04f55c8ca4784201ee710c6ac2d233428051c32f364"
+    },
+    {
+      "date": 1716705722853,
+      "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-26-05-12-success.log",
+      "hash": "d93c57a7cc329078bd4db4e2edd1a3f4d1172b7e1c0cd665d0c3b068e6dc4e46"
+    },
+    {
+      "date": 1716720768687,
+      "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-26-05-16-success.log",
+      "hash": "829a4e5b3d39c7241fdcf08e12bcdb129546dd53e181251125247589881f69fe"
+    },
+    {
+      "date": 1716916598612,
+      "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-28-05-23-success.log",
+      "hash": "6d09f91892859e6099091dc8ce5ab7ca25ecb2c17dbdc77bb5f5bb77f323e61e"
+    },
+    {
+      "date": 1716919227487,
+      "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-29-05-00-success.log",
+      "hash": "3d3b8264546ef92a1783f650059a9e88959facf04bee4b9058c1b68ff5803736"
+    }
+  ],
+  "hashType": "sha256"
 }
