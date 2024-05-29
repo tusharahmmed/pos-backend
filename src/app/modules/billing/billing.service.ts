@@ -3,9 +3,16 @@ import httpStatus from 'http-status';
 import { JwtPayload } from 'jsonwebtoken';
 import { ENUM_USER_ROLE } from '../../../enums/user';
 import ApiError from '../../../errors/ApiError';
+import { paginationHelpers } from '../../../helpers/paginationHelper';
+import { IPaginationOptions } from '../../../interfaces/pagination';
 import prisma from '../../../shared/prisma';
 import { asyncForEach, checkStockAvailability } from '../../../shared/utils';
-import { IBillingPayload, IPayloadProduct } from './billing.interface';
+import { BILLING_SEARCH_FIELDS } from './billing.constant';
+import {
+  IBillingFilters,
+  IBillingPayload,
+  IPayloadProduct,
+} from './billing.interface';
 
 const createBillingRecord = async (
   user: JwtPayload,
@@ -98,6 +105,83 @@ const createBillingRecord = async (
   return result;
 };
 
+const getAllBillingRecords = async (
+  user: JwtPayload,
+  store_id: string,
+  options: IPaginationOptions,
+  filters: IBillingFilters
+) => {
+  // check same store user and insert store_id
+  if (user.role === ENUM_USER_ROLE.STORE_ADMIN && user.store_id !== store_id) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
+  }
+
+  // pagination
+  const { page, skip, limit, sortBy, sortOrder } =
+    paginationHelpers.calculatePagination(options);
+
+  // filters
+  const { search } = filters;
+
+  const andConditions = [];
+
+  // generate search condition
+  if (search) {
+    andConditions.push({
+      OR: BILLING_SEARCH_FIELDS.map(field => ({
+        [field]: {
+          contains: search,
+          mode: 'insensitive',
+        },
+      })),
+    });
+  }
+
+  // generate filter BY store_id
+  andConditions.push({ AND: [{ store_id: { equals: user.store_id } }] });
+
+  const whereConditions: any =
+    andConditions.length > 0 ? { AND: andConditions } : {};
+
+  const result = await prisma.billing.findMany({
+    // filters
+    where: whereConditions,
+
+    include: {
+      billing_products: {
+        include: {
+          product: {
+            select: {
+              title: true,
+              image: true,
+              price: true,
+            },
+          },
+        },
+      },
+    },
+
+    // pagination
+    orderBy: {
+      [sortBy]: sortOrder,
+    },
+    skip,
+    take: limit,
+  });
+
+  const total = await prisma.billing.count({ where: whereConditions });
+
+  return {
+    meta: {
+      page,
+      limit,
+      total,
+    },
+    data: result,
+  };
+};
+
 export const BillingService = {
   createBillingRecord,
+  getAllBillingRecords,
 };

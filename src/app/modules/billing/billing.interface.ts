@@ -11,3 +11,7 @@ export type IBillingPayload = {
   products: IPayloadProduct[];
   store_id?: string;
 };
+
+export type IBillingFilters = {
+  search?: string;
+};

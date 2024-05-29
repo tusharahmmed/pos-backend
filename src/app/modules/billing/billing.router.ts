@@ -14,4 +14,10 @@ router.post(
   BillingController.creatBillingRecord
 );
 
+router.get(
+  '/:store_id',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
+  BillingController.getAllBillingRecords
+);
+
 export const BillingRoutes = router;
