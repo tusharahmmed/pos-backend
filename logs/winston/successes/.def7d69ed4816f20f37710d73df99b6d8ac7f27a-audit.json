@@ -59,6 +59,11 @@
             "date": 1716998401318,
             "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-29-05-22-success.log",
             "hash": "28c5a850b3be94aa7cd773a76ea93beb6f41804c79e9cade8e4c181ef3786be6"
+        },
+        {
+            "date": 1717048611885,
+            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-30-05-11-success.log",
+            "hash": "d4ceb2291a6339235dd9234dc3a13c1cdea47d23ecba2da1ac2ddaad2fb74543"
         }
     ],
     "hashType": "sha256"

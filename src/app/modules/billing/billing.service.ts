@@ -1,6 +1,7 @@
 import { Billing } from '@prisma/client';
 import httpStatus from 'http-status';
 import { JwtPayload } from 'jsonwebtoken';
+import { IPARAMS_STORE_ID } from '../../../constants/store_id';
 import { ENUM_USER_ROLE } from '../../../enums/user';
 import ApiError from '../../../errors/ApiError';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
@@ -181,7 +182,44 @@ const getAllBillingRecords = async (
   };
 };
 
+const getSingleBillingRecord = async (
+  user: JwtPayload,
+  params: IPARAMS_STORE_ID
+) => {
+  // check same store user and insert store_id
+  if (
+    user.role === ENUM_USER_ROLE.STORE_ADMIN &&
+    user.store_id !== params.store_id
+  ) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
+  }
+
+  const result = await prisma.billing.findUnique({
+    // filters
+    where: {
+      id: params.id,
+    },
+
+    include: {
+      billing_products: {
+        include: {
+          product: {
+            select: {
+              title: true,
+              image: true,
+              price: true,
+            },
+          },
+        },
+      },
+    },
+  });
+
+  return result;
+};
+
 export const BillingService = {
   createBillingRecord,
   getAllBillingRecords,
+  getSingleBillingRecord,
 };

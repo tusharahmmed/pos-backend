@@ -1,6 +1,7 @@
 import httpStatus from 'http-status';
 import { JwtPayload } from 'jsonwebtoken';
 import { PAGINATION_FIELDS } from '../../../constants/pagination';
+import { PARAMS_STORE_ID } from '../../../constants/store_id';
 import catchAsync from '../../../shared/catchAsync';
 import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
@@ -48,7 +49,26 @@ const getAllBillingRecords = catchAsync(async (req, res) => {
   });
 });
 
+const getSingleBillingRecord = catchAsync(async (req, res) => {
+  const user = req.user;
+  const params = pick(req.params, PARAMS_STORE_ID);
+
+  const result = await BillingService.getSingleBillingRecord(
+    user as JwtPayload,
+    params
+  );
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Billing successfully retrieved',
+
+    data: result,
+  });
+});
+
 export const BillingController = {
   creatBillingRecord,
   getAllBillingRecords,
+  getSingleBillingRecord,
 };
