@@ -34,5 +34,10 @@ router.delete(
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
   CategoryController.deleteCategory
 );
+router.get(
+  '/:store_id/:id',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
+  CategoryController.getSingleCategory
+);
 
 export const CategoryRoutes = router;

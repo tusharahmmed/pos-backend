@@ -52,6 +52,23 @@ const getAllCategories = catchAsync(async (req, res) => {
   });
 });
 
+const getSingleCategory = catchAsync(async (req, res) => {
+  const user = req.user;
+  const params = pick(req.params, PARAMS_STORE_ID);
+
+  const result = await CategoryService.getSingleCategory(
+    user as JwtPayload,
+    params
+  );
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Category successfully fetched',
+    data: result,
+  });
+});
+
 const updateCategory = catchAsync(async (req, res) => {
   const user = req.user;
   const params = pick(req.params, PARAMS_STORE_ID);
@@ -93,6 +110,7 @@ const deleteCategory = catchAsync(async (req, res) => {
 export const CategoryController = {
   createCategory,
   getAllCategories,
+  getSingleCategory,
   updateCategory,
   deleteCategory,
 };

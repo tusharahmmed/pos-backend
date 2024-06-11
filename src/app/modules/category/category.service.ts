@@ -104,6 +104,22 @@ const getAllCategories = async (
   };
 };
 
+const getSingleCategory = async (user: JwtPayload, params: ICategoryParams) => {
+  // check same store user and insert store_id
+  if (
+    user.role === ENUM_USER_ROLE.STORE_ADMIN &&
+    user.store_id !== params.store_id
+  ) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
+  }
+
+  const result = await prisma.category.findUnique({
+    where: { id: params.id },
+  });
+
+  return result;
+};
+
 const updateCategory = async (
   user: JwtPayload,
   params: ICategoryParams,
@@ -185,4 +201,5 @@ export const CategoryService = {
   getAllCategories,
   updateCategory,
   deleteCategory,
+  getSingleCategory,
 };

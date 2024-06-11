@@ -82,6 +82,7 @@ const uploadToCloudinary = async (
       file.path,
       (error: Error, result: ICloudinaryResponse) => {
         if (error) {
+          console.log(error);
           reject(error);
         } else {
           resolve(result);

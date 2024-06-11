@@ -21,12 +21,12 @@ async function bootstrap() {
 
   const unexpectedErrorHandler = (error: unknown) => {
     // errorlogger.error(error);
-    console.log(error);
+    console.log('yeha pe', error);
     exitHandler();
   };
 
   process.on('uncaughtException', unexpectedErrorHandler);
-  process.on('unhandledRejection', unexpectedErrorHandler);
+  // process.on('unhandledRejection', unexpectedErrorHandler);
 
   process.on('SIGTERM', () => {
     // logger.info('SIGTERM received');

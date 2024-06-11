@@ -5,6 +5,8 @@ const validateFormDataRequest =
   (schema: AnyZodObject | ZodEffects<AnyZodObject>) =>
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     req.body = JSON.parse(req.body.data);
+    // console.log('body', req.body);
+    // console.log('file', req.file);
     try {
       await schema.parseAsync({
         body: req.body,
