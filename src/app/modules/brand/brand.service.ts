@@ -104,6 +104,20 @@ const getAllBrands = async (
   };
 };
 
+const getSingleBrand = async (user: JwtPayload, params: IBrandParams) => {
+  if (
+    user.role === ENUM_USER_ROLE.STORE_ADMIN &&
+    user.store_id !== params.store_id
+  ) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
+  }
+  const result = await prisma.brand.findUnique({
+    where: { id: params.id },
+  });
+
+  return result;
+};
+
 const updateBrand = async (
   user: JwtPayload,
   params: IBrandParams,
@@ -183,6 +197,7 @@ const deleteBrand = async (user: JwtPayload, params: IBrandParams) => {
 export const BrandService = {
   createBrand,
   getAllBrands,
+  getSingleBrand,
   updateBrand,
   deleteBrand,
 };

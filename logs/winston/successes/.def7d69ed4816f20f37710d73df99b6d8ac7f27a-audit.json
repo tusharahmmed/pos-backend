@@ -6,46 +6,6 @@
     "auditLog": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\.def7d69ed4816f20f37710d73df99b6d8ac7f27a-audit.json",
     "files": [
         {
-            "date": 1716916598612,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-28-05-23-success.log",
-            "hash": "6d09f91892859e6099091dc8ce5ab7ca25ecb2c17dbdc77bb5f5bb77f323e61e"
-        },
-        {
-            "date": 1716919227487,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-29-05-00-success.log",
-            "hash": "3d3b8264546ef92a1783f650059a9e88959facf04bee4b9058c1b68ff5803736"
-        },
-        {
-            "date": 1716978975715,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-29-05-16-success.log",
-            "hash": "44982070e4836a5ed5a158ffa4a736547c904fefb804bd0ded1a4dc56e123027"
-        },
-        {
-            "date": 1716991312471,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-29-05-20-success.log",
-            "hash": "df90c2630e3957b04ba0751f487653c2cb9ce27c2f5739674b35ebc88e48ff32"
-        },
-        {
-            "date": 1716998059989,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-29-05-21-success.log",
-            "hash": "941a152edd359fe62ebede8cab91f106dc74e6b4ac6e01513c34deaa2e86b4ae"
-        },
-        {
-            "date": 1716998401318,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-29-05-22-success.log",
-            "hash": "28c5a850b3be94aa7cd773a76ea93beb6f41804c79e9cade8e4c181ef3786be6"
-        },
-        {
-            "date": 1717048611885,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-30-05-11-success.log",
-            "hash": "d4ceb2291a6339235dd9234dc3a13c1cdea47d23ecba2da1ac2ddaad2fb74543"
-        },
-        {
-            "date": 1717135943483,
-            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-31-05-12-success.log",
-            "hash": "1a2f2b417cd2503ae80e5687b6733ff6e52d8b7ecd9df00c6715e6d72a562739"
-        },
-        {
             "date": 1717221445163,
             "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-01-06-11-success.log",
             "hash": "adebca7390a709fb68aafea19e9710d3a9efe4ca32285614367ddb7d31a28b2c"
@@ -84,6 +44,26 @@
             "date": 1718085841103,
             "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-11-06-12-success.log",
             "hash": "c09b61950c924aa9a99237893b3c559f7a0383e76c138a22b3a1a04447d3cb8d"
+        },
+        {
+            "date": 1718099663472,
+            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-11-06-15-success.log",
+            "hash": "61586c09252c612852ea8726569338a451059718c72a03036a324b9ac45a02be"
+        },
+        {
+            "date": 1718100064110,
+            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-11-06-16-success.log",
+            "hash": "a2fc812f31a12dd73bb5ce9a70e228b3bb696884dfbfc50d16471fb7cf447c5a"
+        },
+        {
+            "date": 1718427529250,
+            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-15-06-10-success.log",
+            "hash": "686b4fd808b1aaac93877b77f5f49c1ceb661cb96ee46cedf643268317841c6a"
+        },
+        {
+            "date": 1718427602816,
+            "name": "E:\\courses\\programmingHero\\Nexus Projects\\pos\\server\\logs\\winston\\successes\\POS-2024-15-06-11-success.log",
+            "hash": "a29dce1d107e2dea8bc234f75dc35c5f04a73c4e3214158c65921c1c2172b69d"
         }
     ],
     "hashType": "sha256"

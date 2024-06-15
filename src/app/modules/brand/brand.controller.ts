@@ -52,6 +52,20 @@ const getAllBrands = catchAsync(async (req, res) => {
   });
 });
 
+const getSingleBrand = catchAsync(async (req, res) => {
+  const user = req.user;
+  const params = pick(req.params, PARAMS_STORE_ID);
+
+  const result = await BrandService.getSingleBrand(user as JwtPayload, params);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Brand successfully deleted',
+    data: result,
+  });
+});
+
 const updateBrand = catchAsync(async (req, res) => {
   const user = req.user;
   const params = pick(req.params, PARAMS_STORE_ID);
@@ -82,7 +96,7 @@ const deleteBrand = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
-    message: 'Brand successfully deleted',
+    message: 'Brand successfully fetched',
     data: result,
   });
 });
@@ -90,6 +104,7 @@ const deleteBrand = catchAsync(async (req, res) => {
 export const BrandController = {
   createBrand,
   getAllBrands,
+  getSingleBrand,
   updateBrand,
   deleteBrand,
 };

@@ -29,10 +29,15 @@ router.patch(
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
   BrandController.updateBrand
 );
+
 router.delete(
   '/:store_id/:id',
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
   BrandController.deleteBrand
 );
-
+router.get(
+  '/:store_id/:id',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STORE_ADMIN),
+  BrandController.getSingleBrand
+);
 export const BrandRoutes = router;

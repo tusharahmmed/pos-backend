@@ -1,7 +1,7 @@
 import express from 'express';
 import { AuthRoutes } from '../modules/auth/auth.route';
 import { BillingRoutes } from '../modules/billing/billing.router';
-import { BrandRoutes } from '../modules/brand/category.route';
+import { BrandRoutes } from '../modules/brand/brand.route';
 import { CategoryRoutes } from '../modules/category/category.route';
 import { ProductRoutes } from '../modules/product/product.route';
 import { StoreRoutes } from '../modules/store/store.route';
