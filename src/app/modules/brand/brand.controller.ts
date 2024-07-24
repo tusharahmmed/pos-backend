@@ -96,7 +96,7 @@ const deleteBrand = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
-    message: 'Brand successfully fetched',
+    message: 'Brand successfully deleted',
     data: result,
   });
 });
