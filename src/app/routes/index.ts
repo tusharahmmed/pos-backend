@@ -1,4 +1,5 @@
 import express from 'express';
+import { AnylyticsRoutes } from '../modules/analytics/anylytics.route';
 import { AuthRoutes } from '../modules/auth/auth.route';
 import { BillingRoutes } from '../modules/billing/billing.router';
 import { BrandRoutes } from '../modules/brand/brand.route';
@@ -32,6 +33,10 @@ const moduleRoutes = [
   {
     path: '/billings',
     route: BillingRoutes,
+  },
+  {
+    path: '/anylytics',
+    route: AnylyticsRoutes,
   },
 ];
 
