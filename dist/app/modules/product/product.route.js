@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProductRoutes = void 0;
+const express_1 = require("express");
+const user_1 = require("../../../enums/user");
+const FileUploadHelper_1 = require("../../../helpers/FileUploadHelper");
+const auth_1 = __importDefault(require("../../middlewares/auth"));
+const formDataValidation_1 = __importDefault(require("../../middlewares/formDataValidation"));
+const product_controller_1 = require("./product.controller");
+const product_validation_1 = require("./product.validation");
+const router = (0, express_1.Router)();
+router.delete('/:store_id/:id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.STORE_ADMIN), product_controller_1.ProductController.deleteSingleProduct);
+router.patch('/:store_id/:id', FileUploadHelper_1.FileUploadHelper.multerUpload.single('file'), (0, formDataValidation_1.default)(product_validation_1.ProductValidation.updateProduct), (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.STORE_ADMIN), product_controller_1.ProductController.updateSingeProduct);
+router.get('/:store_id/:id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.STORE_ADMIN), product_controller_1.ProductController.getSingleProduct);
+router.post('/:store_id', FileUploadHelper_1.FileUploadHelper.multerUpload.single('file'), (0, formDataValidation_1.default)(product_validation_1.ProductValidation.creatProduct), (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.STORE_ADMIN), product_controller_1.ProductController.createProduct);
+router.get('/:store_id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.STORE_ADMIN), product_controller_1.ProductController.getAllProducts);
+exports.ProductRoutes = router;

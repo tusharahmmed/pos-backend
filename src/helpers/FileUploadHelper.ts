@@ -1,11 +1,14 @@
+/* eslint-disable no-unused-vars */
 import { v2 as cloudinary } from 'cloudinary';
 import httpStatus from 'http-status';
 import multer from 'multer';
 // import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import path from 'path';
 import config from '../config';
 import ApiError from '../errors/ApiError';
 import {
+  CloudinaryParams,
   // CloudinaryParams,
   ICloudinaryResponse,
   IUploadFile,
@@ -18,18 +21,18 @@ cloudinary.config({
   secure: true,
 });
 
-// const params: CloudinaryParams = {
-//   folder: 'pos',
-//   unique_filename: true,
-//   allowed_formats: ['jpg', 'png', 'jpeg', 'gif'],
+const params: CloudinaryParams = {
+  folder: 'pos',
+  unique_filename: true,
+  allowed_formats: ['jpg', 'png', 'jpeg', 'gif'],
 
-//   // transformation: [{ width: 500, height: 500, crop: 'limit' }],
-// };
+  // transformation: [{ width: 500, height: 500, crop: 'limit' }],
+};
 
-// const cloudinaryStorage = new CloudinaryStorage({
-//   cloudinary: cloudinary,
-//   params: params,
-// });
+const cloudinaryStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: params,
+});
 
 const UPLOAD_FOLDER = './uploads';
 
@@ -53,7 +56,8 @@ const multerStorage = multer.diskStorage({
 });
 
 const multerUpload = multer({
-  storage: multerStorage,
+  storage: cloudinaryStorage,
+  // storage: multerStorage,
   // dest: './uploads',
 
   fileFilter: function (req, file, cb) {
